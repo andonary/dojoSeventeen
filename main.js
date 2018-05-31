@@ -13,8 +13,7 @@ const timeMath = (hour1, operator, hour2) => {
   operator === "+"
     ? arrayH1.reduceRight((acc, val, index) => {
         const maxUnit = index > 0 ? 60 : 24;
-        const maxNextUnit = index === 1 ? 24 : 60;
-        let result = val + arrayH2[index] + acc;
+        const result = val + arrayH2[index] + acc;
         timeMath.push(result % maxUnit);
         acc = result >= maxUnit ? 1 : 0;
         return acc;
@@ -25,7 +24,6 @@ const timeMath = (hour1, operator, hour2) => {
         acc = result >= 0 ? 0 : 1;
         result = result >= 0 ? result : maxUnit + result;
         timeMath.push(result);
-        console.log(result, acc);
         return acc;
       }, 0);
   timeMath = timeMath
